@@ -20,6 +20,7 @@ load_dotenv()
 # Thêm project root vào sys.path để import các task từ src/
 PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / ".venv" / "Lib" / "site-packages"))
 
 # =============================================================================
 # PAGE CONFIG
@@ -600,4 +601,3 @@ if query:
         "sources": sources,
         "retrieval_source": retrieval_source,
     })
-
