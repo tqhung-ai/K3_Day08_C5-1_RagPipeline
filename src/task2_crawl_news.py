@@ -19,12 +19,12 @@ DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "news"
 
 # Cac trang chinh thuc bao phu lich trinh, diem den, am thuc va kinh nghiem.
 ARTICLE_URLS = [
-    "https://vietnam.travel/things-to-do/perfect-weekend-ha-noi",
-    "https://vietnam.travel/places-to-go/northern-vietnam/ha-giang",
-    "https://vietnam.travel/node/1843",
-    "https://vietnam.travel/things-to-do/8-things-to-do-in-dalat",
-    "https://vietnam.travel/things-to-do/vietnam-foodie-guide-region",
-    "https://vietnam.travel/things-to-do/beginners-guide-vietnamese-street-food",
+    "https://www.traveloka.com/vi-vn/explore/tips/cung-traveloka-va-nhi-dang-du-lich-ha-noi-1-ngay-nang-dep/57879",
+    "https://www.momo.vn/blog/kinh-nghiem-du-lich-ha-giang-c101dt214",
+    "https://www.momo.vn/blog/kinh-nghiem-du-lich-da-nang-khong-the-khong-biet-c101dt210",
+    "https://www.traveloka.com/vi-vn/explore/destination/du-lich-da-lat-tu-tuc/210868",
+    "https://www.momo.vn/blog/bo-tui-kinh-nghiem-du-lich-viet-nam-tu-tuc-cho-lan-dau-kham-pha-c101dt779",
+    "https://www.traveloka.com/vi-vn/explore/tips/top-3-lich-trinh-du-lich-quy-nhon-khac-biet/59061",
     "https://www.momo.vn/blog/mon-ngon-quy-nhon-c101dt253",
 ]
 
