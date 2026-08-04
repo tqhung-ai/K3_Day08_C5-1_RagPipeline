@@ -41,8 +41,8 @@ CHROMA_DIR = Path(__file__).parent.parent / "chroma_db"
 # =============================================================================
 
 # TODO: Chọn chunking strategy và giải thích vì sao
-CHUNK_SIZE = 500        # Vì sao chọn 500? ...
-CHUNK_OVERLAP = 50      # Vì sao chọn 50? ...
+CHUNK_SIZE = 800        # Theo yêu cầu lab guide: chunk size 800
+CHUNK_OVERLAP = 100     # Theo yêu cầu lab guide: chunk overlap 100
 CHUNKING_METHOD = "recursive"  # "recursive" | "markdown_header" | "semantic"
 
 # TODO: Chọn embedding model và giải thích
@@ -65,17 +65,17 @@ def load_documents() -> list[dict]:
     Returns:
         List of {'content': str, 'metadata': {'source': str, 'type': str}}
     """
-    # TODO: Iterate qua STANDARDIZED_DIR, đọc .md files
-    # documents = []
-    # for md_file in STANDARDIZED_DIR.rglob("*.md"):
-    #     content = md_file.read_text(encoding="utf-8")
-    #     doc_type = "legal" if "legal" in str(md_file) else "news"
-    #     documents.append({
-    #         "content": content,
-    #         "metadata": {"source": md_file.name, "type": doc_type}
-    #     })
-    # return documents
-    raise NotImplementedError("Implement load_documents")
+    documents = []
+    for md_file in STANDARDIZED_DIR.rglob("*.md"):
+        content = md_file.read_text(encoding="utf-8")
+        if not content.strip():
+            continue
+        doc_type = "legal" if "legal" in str(md_file) else "news"
+        documents.append({
+            "content": content,
+            "metadata": {"source": md_file.name, "type": doc_type}
+        })
+    return documents
 
 
 def chunk_documents(documents: list[dict]) -> list[dict]:
@@ -85,26 +85,22 @@ def chunk_documents(documents: list[dict]) -> list[dict]:
     Returns:
         List of {'content': str, 'metadata': dict} — mỗi item là 1 chunk
     """
-    # TODO: Implement chunking
-    #
-    # Ví dụ với RecursiveCharacterTextSplitter:
-    # from langchain_text_splitters import RecursiveCharacterTextSplitter
-    #
-    # splitter = RecursiveCharacterTextSplitter(
-    #     chunk_size=CHUNK_SIZE,
-    #     chunk_overlap=CHUNK_OVERLAP,
-    #     separators=["\n\n", "\n", ". ", " ", ""]
-    # )
-    # chunks = []
-    # for doc in documents:
-    #     splits = splitter.split_text(doc["content"])
-    #     for i, chunk_text in enumerate(splits):
-    #         chunks.append({
-    #             "content": chunk_text,
-    #             "metadata": {**doc["metadata"], "chunk_index": i}
-    #         })
-    # return chunks
-    raise NotImplementedError("Implement chunk_documents")
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP,
+        separators=["\n\n", "\n", ". ", " ", ""]
+    )
+    chunks = []
+    for doc in documents:
+        splits = splitter.split_text(doc["content"])
+        for i, chunk_text in enumerate(splits):
+            chunks.append({
+                "content": chunk_text,
+                "metadata": {**doc["metadata"], "chunk_index": i}
+            })
+    return chunks
 
 
 def embed_chunks(chunks: list[dict]) -> list[dict]:
@@ -114,44 +110,36 @@ def embed_chunks(chunks: list[dict]) -> list[dict]:
     Returns:
         Mỗi chunk dict được thêm key 'embedding': list[float]
     """
-    # TODO: Implement embedding
-    #
-    # Ví dụ với sentence-transformers:
-    # from sentence_transformers import SentenceTransformer
-    #
-    # model = SentenceTransformer(EMBEDDING_MODEL)
-    # texts = [c["content"] for c in chunks]
-    # embeddings = model.encode(texts, show_progress_bar=True)
-    # for chunk, emb in zip(chunks, embeddings):
-    #     chunk["embedding"] = emb.tolist()
-    # return chunks
-    raise NotImplementedError("Implement embed_chunks")
+    from sentence_transformers import SentenceTransformer
+
+    model = SentenceTransformer(EMBEDDING_MODEL)
+    texts = [c["content"] for c in chunks]
+    embeddings = model.encode(texts, show_progress_bar=True)
+    for chunk, emb in zip(chunks, embeddings):
+        chunk["embedding"] = emb.tolist()
+    return chunks
 
 
 def index_to_vectorstore(chunks: list[dict]):
     """
     Lưu chunks vào vector store đã chọn.
     """
-    # TODO: Implement indexing
-    #
-    # Ví dụ với ChromaDB:
-    # import chromadb
-    #
-    # CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-    # client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    # collection = client.get_or_create_collection(
-    #     name=COLLECTION_NAME,
-    #     metadata={"hnsw:space": "cosine"},
-    # )
-    #
-    # ids = [f"{c['metadata']['source']}_chunk_{c['metadata']['chunk_index']}" for c in chunks]
-    # collection.upsert(
-    #     ids=ids,
-    #     documents=[c["content"] for c in chunks],
-    #     embeddings=[c["embedding"] for c in chunks],
-    #     metadatas=[c["metadata"] for c in chunks],
-    # )
-    raise NotImplementedError("Implement index_to_vectorstore")
+    import chromadb
+
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    collection = client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
+
+    ids = [f"{c['metadata']['source']}_chunk_{c['metadata']['chunk_index']}" for c in chunks]
+    collection.upsert(
+        ids=ids,
+        documents=[c["content"] for c in chunks],
+        embeddings=[c["embedding"] for c in chunks],
+        metadatas=[c["metadata"] for c in chunks],
+    )
 
 
 def run_pipeline():
@@ -164,16 +152,16 @@ def run_pipeline():
     print("=" * 50)
 
     docs = load_documents()
-    print(f"\n✓ Loaded {len(docs)} documents")
+    print(f"\n[OK] Loaded {len(docs)} documents")
 
     chunks = chunk_documents(docs)
-    print(f"✓ Created {len(chunks)} chunks")
+    print(f"[OK] Created {len(chunks)} chunks")
 
     chunks = embed_chunks(chunks)
-    print(f"✓ Embedded {len(chunks)} chunks")
+    print(f"[OK] Embedded {len(chunks)} chunks")
 
     index_to_vectorstore(chunks)
-    print("✓ Indexed to vector store")
+    print("[OK] Indexed to vector store")
 
 
 if __name__ == "__main__":
