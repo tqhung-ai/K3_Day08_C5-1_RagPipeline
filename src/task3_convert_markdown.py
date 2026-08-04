@@ -1,86 +1,79 @@
-"""
-Task 3 — Convert toàn bộ file trong data/landing/ thành Markdown.
-
-Sử dụng MarkItDown của Microsoft:
-    https://github.com/microsoft/markitdown
-
-Cài đặt:
-    pip install "markitdown[pdf]"
-    # Lưu ý: cần extra [pdf] để convert được file PDF. Chỉ "pip install markitdown"
-    # (không có extra) sẽ báo MissingDependencyException khi convert PDF, dù JSON/DOCX
-    # vẫn convert bình thường.
-
-Hướng dẫn:
-    1. Scan toàn bộ file trong data/landing/ (PDF, DOCX, JSON)
-    2. Convert sang Markdown
-    3. Lưu vào data/standardized/ giữ nguyên cấu trúc thư mục
-"""
+"""Task 3 - Chuan hoa cam nang PDF va bai crawl JSON sang Markdown."""
 
 import json
 from pathlib import Path
 
 from markitdown import MarkItDown
 
+
 LANDING_DIR = Path(__file__).parent.parent / "data" / "landing"
 OUTPUT_DIR = Path(__file__).parent.parent / "data" / "standardized"
 
 
-def convert_legal_docs():
-    """Convert PDF/DOCX files trong data/landing/legal/ sang markdown."""
+def convert_legal_docs() -> list[Path]:
+    """Convert PDF/DOCX trong landing/legal sang Markdown UTF-8."""
     legal_dir = LANDING_DIR / "legal"
     output_dir = OUTPUT_DIR / "legal"
     output_dir.mkdir(parents=True, exist_ok=True)
+    if not legal_dir.exists():
+        return []
 
-    md = MarkItDown()
+    converter = MarkItDown()
+    outputs = []
+    for filepath in sorted(legal_dir.iterdir()):
+        if filepath.suffix.lower() not in {".pdf", ".docx", ".doc"}:
+            continue
+        print(f"Converting: {filepath.name}")
+        result = converter.convert(str(filepath))
+        content = (result.text_content or "").strip()
+        if len(content) < 200:
+            raise ValueError(f"Noi dung convert qua ngan: {filepath}")
+        output_path = output_dir / f"{filepath.stem}.md"
+        output_path.write_text(content + "\n", encoding="utf-8")
+        outputs.append(output_path)
+        print(f"  Da luu: {output_path}")
+    return outputs
 
-    for filepath in legal_dir.iterdir():
-        if filepath.suffix.lower() in (".pdf", ".docx", ".doc"):
-            print(f"Converting: {filepath.name}")
-            # TODO: Convert và lưu file
-            # result = md.convert(str(filepath))
-            # output_path = output_dir / f"{filepath.stem}.md"
-            # output_path.write_text(result.text_content, encoding="utf-8")
-            # print(f"  ✓ Saved: {output_path}")
-            raise NotImplementedError("Implement convert_legal_docs")
 
-
-def convert_news_articles():
-    """Convert JSON crawled articles trong data/landing/news/ sang markdown."""
+def convert_news_articles() -> list[Path]:
+    """Chuyen JSON bai viet sang Markdown, kem metadata truy vet nguon."""
     news_dir = LANDING_DIR / "news"
     output_dir = OUTPUT_DIR / "news"
     output_dir.mkdir(parents=True, exist_ok=True)
+    if not news_dir.exists():
+        return []
 
-    for filepath in news_dir.iterdir():
-        if filepath.suffix.lower() == ".json":
-            print(f"Converting: {filepath.name}")
-            # TODO: Đọc JSON, extract content_markdown, lưu thành .md
-            # data = json.loads(filepath.read_text(encoding="utf-8"))
-            # output_path = output_dir / f"{filepath.stem}.md"
-            #
-            # # Thêm metadata header
-            # header = f"# {data.get('title', 'Unknown')}\n\n"
-            # header += f"**Source:** {data.get('url', 'N/A')}\n"
-            # header += f"**Crawled:** {data.get('date_crawled', 'N/A')}\n\n---\n\n"
-            #
-            # content = header + data.get("content_markdown", "")
-            # output_path.write_text(content, encoding="utf-8")
-            # print(f"  ✓ Saved: {output_path}")
-            raise NotImplementedError("Implement convert_news_articles")
+    outputs = []
+    for filepath in sorted(news_dir.glob("*.json")):
+        print(f"Converting: {filepath.name}")
+        data = json.loads(filepath.read_text(encoding="utf-8"))
+        title = str(data.get("title") or "Unknown").strip()
+        source = str(data.get("url") or "N/A").strip()
+        crawled = str(data.get("date_crawled") or "N/A").strip()
+        body = str(data.get("content_markdown") or data.get("content") or "").strip()
+        if len(body) < 200:
+            raise ValueError(f"Noi dung bai viet qua ngan: {filepath}")
+
+        content = (
+            f"# {title}\n\n"
+            f"**Source:** {source}\n\n"
+            f"**Crawled:** {crawled}\n\n"
+            "---\n\n"
+            f"{body}\n"
+        )
+        output_path = output_dir / f"{filepath.stem}.md"
+        output_path.write_text(content, encoding="utf-8")
+        outputs.append(output_path)
+        print(f"  Da luu: {output_path}")
+    return outputs
 
 
-def convert_all():
-    """Convert toàn bộ files."""
-    print("=" * 50)
-    print("Task 3: Convert to Markdown (MarkItDown)")
-    print("=" * 50)
-
-    print("\n--- Legal Documents ---")
-    convert_legal_docs()
-
-    print("\n--- News Articles ---")
-    convert_news_articles()
-
-    print("\n✓ Done! Output tại:", OUTPUT_DIR)
+def convert_all() -> list[Path]:
+    """Convert toan bo corpus va tra ve danh sach tep da tao."""
+    print("Task 3: Convert travel corpus to Markdown")
+    outputs = convert_legal_docs() + convert_news_articles()
+    print(f"Hoan tat Task 3: {len(outputs)} tep tai {OUTPUT_DIR}")
+    return outputs
 
 
 if __name__ == "__main__":
