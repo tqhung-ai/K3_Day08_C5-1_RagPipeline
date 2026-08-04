@@ -1,17 +1,198 @@
 [
   {
-    "question": "Học phí hàng năm của chương trình Business tại RMIT Vietnam là bao nhiêu?",
-    "expected_answer": "Khoảng 375.840.000 VND mỗi năm (tùy chương trình cụ thể).",
-    "expected_context": "Trang Tuition Fees, mục Undergraduate Programs"
+    "id": "Q01",
+    "question": "Hà Nội là thủ đô của quốc gia nào?",
+    "reference_answer": "Hà Nội là thủ đô của Việt Nam.",
+    "reference_contexts": [
+      "Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam."
+    ],
+    "category": "definition",
+    "difficulty": "easy",
+    "source": "hanoi.md"
   },
   {
-    "question": "Học phí được thanh toán theo hình thức nào?",
-    "expected_answer": "Thanh toán theo từng học kỳ, tính theo từng môn học đã đăng ký.",
-    "expected_context": "Trang Tuition Fees, mục Payment Structure"
+    "id": "Q02",
+    "question": "Văn Miếu – Quốc Tử Giám được xây dựng vào triều đại nào?",
+    "reference_answer": "Văn Miếu được xây dựng dưới triều Lý.",
+    "reference_contexts": [
+      "Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông."
+    ],
+    "category": "definition",
+    "difficulty": "easy",
+    "source": "van_mieu.md"
   },
   {
-    "question": "Trường có cung cấp ký túc xá trong khuôn viên không?",
-    "expected_answer": "Không — trường không cung cấp chỗ ở trong khuôn viên, nhưng có đội ngũ hỗ trợ sinh viên tìm chỗ ở gần trường.",
-    "expected_context": "Trang Accommodation Services"
+    "id": "Q03",
+    "question": "Hồ Hoàn Kiếm còn được gọi là gì?",
+    "reference_answer": "Hồ Hoàn Kiếm còn được gọi là Hồ Gươm.",
+    "reference_contexts": ["Hồ Hoàn Kiếm, hay còn gọi là Hồ Gươm."],
+    "category": "definition",
+    "difficulty": "easy",
+    "source": "ho_hoan_kiem.md"
+  },
+  {
+    "id": "Q04",
+    "question": "Lăng Chủ tịch Hồ Chí Minh nằm ở đâu?",
+    "reference_answer": "Lăng Chủ tịch Hồ Chí Minh nằm tại Quảng trường Ba Đình, Hà Nội.",
+    "reference_contexts": [
+      "Lăng Chủ tịch Hồ Chí Minh tọa lạc tại Quảng trường Ba Đình."
+    ],
+    "category": "definition",
+    "difficulty": "easy",
+    "source": "lang_bac.md"
+  },
+  {
+    "id": "Q05",
+    "question": "Giờ mở cửa của Văn Miếu – Quốc Tử Giám là khi nào?",
+    "reference_answer": "Thông tin giờ mở cửa được cung cấp trong tài liệu.",
+    "reference_contexts": ["Giờ mở cửa của Văn Miếu..."],
+    "category": "retrieval",
+    "difficulty": "medium",
+    "source": "van_mieu.md"
+  },
+  {
+    "id": "Q06",
+    "question": "Giá vé tham quan Hoàng thành Thăng Long dành cho người lớn là bao nhiêu?",
+    "reference_answer": "Thông tin giá vé được nêu trong tài liệu.",
+    "reference_contexts": ["Giá vé tham quan Hoàng thành Thăng Long..."],
+    "category": "retrieval",
+    "difficulty": "medium",
+    "source": "hoang_thanh.md"
+  },
+  {
+    "id": "Q07",
+    "question": "Địa chỉ của Chùa Một Cột là gì?",
+    "reference_answer": "Thông tin địa chỉ được nêu trong tài liệu.",
+    "reference_contexts": ["Chùa Một Cột nằm tại..."],
+    "category": "retrieval",
+    "difficulty": "medium",
+    "source": "chua_mot_cot.md"
+  },
+  {
+    "id": "Q08",
+    "question": "Du khách cần lưu ý điều gì khi vào Lăng Chủ tịch Hồ Chí Minh?",
+    "reference_answer": "Du khách cần tuân thủ các quy định được nêu trong tài liệu.",
+    "reference_contexts": [
+      "Khi vào Lăng Chủ tịch Hồ Chí Minh, du khách cần..."
+    ],
+    "category": "retrieval",
+    "difficulty": "medium",
+    "source": "lang_bac.md"
+  },
+  {
+    "id": "Q09",
+    "question": "Hãy giới thiệu ngắn gọn về Hồ Hoàn Kiếm và các điểm tham quan xung quanh.",
+    "reference_answer": "Hồ Hoàn Kiếm là biểu tượng của Hà Nội, xung quanh có Đền Ngọc Sơn, Tháp Rùa và cầu Thê Húc.",
+    "reference_contexts": ["Hồ Hoàn Kiếm...", "Đền Ngọc Sơn...", "Tháp Rùa..."],
+    "category": "multi_context",
+    "difficulty": "medium",
+    "source": "ho_hoan_kiem.md"
+  },
+  {
+    "id": "Q10",
+    "question": "Gợi ý lịch trình tham quan Hà Nội trong một ngày gồm bốn địa điểm nổi tiếng.",
+    "reference_answer": "Lịch trình được xây dựng từ các địa điểm nổi bật trong tài liệu.",
+    "reference_contexts": [
+      "Văn Miếu...",
+      "Lăng Bác...",
+      "Hồ Hoàn Kiếm...",
+      "Hoàng thành Thăng Long..."
+    ],
+    "category": "multi_context",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q11",
+    "question": "So sánh giá trị lịch sử của Văn Miếu và Hoàng thành Thăng Long.",
+    "reference_answer": "Văn Miếu gắn với giáo dục và Nho học, Hoàng thành Thăng Long là trung tâm quyền lực của nhiều triều đại.",
+    "reference_contexts": ["Văn Miếu...", "Hoàng thành Thăng Long..."],
+    "category": "multi_context",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q12",
+    "question": "Nếu muốn tìm hiểu văn hóa và lịch sử Hà Nội thì nên tham quan những địa điểm nào?",
+    "reference_answer": "Có thể tham quan Văn Miếu, Hoàng thành Thăng Long, Lăng Chủ tịch Hồ Chí Minh và Bảo tàng.",
+    "reference_contexts": ["Văn Miếu...", "Hoàng thành...", "Lăng Bác..."],
+    "category": "multi_context",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q13",
+    "question": "Hồ Tây và Hồ Hoàn Kiếm khác nhau ở điểm nào?",
+    "reference_answer": "Hai địa điểm khác nhau về diện tích, vị trí và giá trị du lịch.",
+    "reference_contexts": ["Hồ Tây...", "Hồ Hoàn Kiếm..."],
+    "category": "comparison",
+    "difficulty": "medium",
+    "source": "multiple"
+  },
+  {
+    "id": "Q14",
+    "question": "Nếu chỉ có nửa ngày thì nên tham quan Văn Miếu hay Hoàng thành Thăng Long trước?",
+    "reference_answer": "Tùy mục đích tham quan, hệ thống sẽ gợi ý dựa trên thông tin trong tài liệu.",
+    "reference_contexts": ["Văn Miếu...", "Hoàng thành..."],
+    "category": "comparison",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q15",
+    "question": "Bảo tàng Dân tộc học và Bảo tàng Lịch sử Quốc gia phù hợp với những đối tượng du khách nào?",
+    "reference_answer": "Mỗi bảo tàng phù hợp với nhóm du khách khác nhau dựa trên nội dung trưng bày.",
+    "reference_contexts": [
+      "Bảo tàng Dân tộc học...",
+      "Bảo tàng Lịch sử Quốc gia..."
+    ],
+    "category": "comparison",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q16",
+    "question": "Nếu trời mưa thì nên ưu tiên tham quan những địa điểm nào?",
+    "reference_answer": "Nên ưu tiên các địa điểm trong nhà hoặc có không gian tham quan phù hợp.",
+    "reference_contexts": ["Bảo tàng...", "Địa điểm tham quan trong nhà..."],
+    "category": "reasoning",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q17",
+    "question": "Tôi đi cùng trẻ nhỏ thì nên lựa chọn địa điểm nào?",
+    "reference_answer": "Hệ thống gợi ý các địa điểm phù hợp với gia đình có trẻ nhỏ.",
+    "reference_contexts": ["Công viên...", "Bảo tàng..."],
+    "category": "reasoning",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q18",
+    "question": "Tôi có ngân sách khoảng 300.000 VNĐ cho vé tham quan thì nên đi những đâu?",
+    "reference_answer": "Hệ thống đề xuất lịch trình dựa trên giá vé của các địa điểm trong tài liệu.",
+    "reference_contexts": ["Giá vé Văn Miếu...", "Giá vé Hoàng thành..."],
+    "category": "reasoning",
+    "difficulty": "hard",
+    "source": "multiple"
+  },
+  {
+    "id": "Q19",
+    "question": "Ai là người thiết kế Tháp Eiffel?",
+    "reference_answer": "Không có thông tin trong bộ dữ liệu để trả lời câu hỏi này.",
+    "reference_contexts": [],
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "source": null
+  },
+  {
+    "id": "Q20",
+    "question": "Dân số Nhật Bản năm 2026 là bao nhiêu?",
+    "reference_answer": "Không có thông tin trong bộ dữ liệu để trả lời câu hỏi này.",
+    "reference_contexts": [],
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "source": null
   }
 ]
