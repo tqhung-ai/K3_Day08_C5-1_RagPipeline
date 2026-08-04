@@ -9,6 +9,7 @@ crawl4ai>=0.3.0
 
 # Task 3 - Document conversion
 markitdown[pdf]>=0.1.0
+pdfplumber>=0.11.0
 fpdf2>=2.7.0
 
 # Task 4 - Chunking & Indexing
