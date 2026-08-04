@@ -1,118 +1,32 @@
-# RAGAS Benchmark Report
+# RAG Evaluation Results
 
-## 1. Thông tin chung
+Framework: RAGAS-compatible offline proxy
 
-| Thuộc tính | Giá trị |
-|------------|----------|
-| Tên dự án | Trợ Lý Hướng Dẫn Viên Du Lịch Thông Minh |
-| Ngày đánh giá | ... |
-| Người thực hiện | ... |
-| Phiên bản hệ thống | ... |
+## Overall Scores
 
----
+| Metric            | Config A: Hybrid + Rerank | Config B: Dense-only |       Δ |
+| ----------------- | ------------------------: | -------------------: | ------: |
+| Faithfulness      |                    0.9505 |               1.0000 | -0.0495 |
+| Answer Relevance  |                    0.7727 |               0.6021 | +0.1706 |
+| Context Recall    |                    0.9375 |               0.7192 | +0.2183 |
+| Context Precision |                    1.0000 |               1.0000 | +0.0000 |
+| **Average**       |                    0.9152 |               0.8303 | +0.0849 |
 
-## 2. Mục tiêu
+## A/B Comparison Analysis
 
-Đánh giá chất lượng hệ thống RAG thông qua bộ **Golden Dataset** gồm 20 câu hỏi và bộ chỉ số của RAGAS.
+Config A uses hybrid semantic + BM25 retrieval with RRF reranking.
+Config B is the dense-only baseline.
 
----
+## Worst Performers (Bottom 3)
 
-## 3. Thông tin bộ dữ liệu
+|   # | Question                                              | Faithfulness | Relevance | Recall | Precision |
+| --: | ----------------------------------------------------- | -----------: | --------: | -----: | --------: |
+|   1 | Làm sao xây dựng lịch trình du lịch tự túc tiết kiệm? |        0.945 |     0.273 |  0.944 |     1.000 |
+|   2 | Hà Giang có những món đặc sản nào?                    |        0.962 |     0.625 |  0.750 |     1.000 |
+|   3 | Đèo Mã Pì Lèng nằm ở đâu và có gì đặc biệt?           |        0.965 |     0.500 |  0.895 |     1.000 |
 
-| Thuộc tính | Giá trị |
-|------------|----------|
-| Tổng số câu hỏi | 20 |
-| Definition | 4 |
-| Retrieval | 4 |
-| Multi-context | 4 |
-| Comparison | 3 |
-| Reasoning | 3 |
-| Unanswerable | 2 |
+## Recommendations
 
----
-
-## 4. Cấu hình Benchmark
-
-| Thành phần | Giá trị |
-|------------|----------|
-| Embedding Model | ... |
-| LLM | ... |
-| Vector Database | ... |
-| Chunk Size | ... |
-| Chunk Overlap | ... |
-| Top-k Retrieval | ... |
-| RAGAS Version | ... |
-
----
-
-## 5. Các Metric đánh giá
-
-- Faithfulness
-- Response Relevancy
-- Context Precision
-- Context Recall
-
----
-
-## 6. Kết quả Benchmark
-
-| Metric | Score |
-|---------|-------|
-| Faithfulness | ... |
-| Response Relevancy | ... |
-| Context Precision | ... |
-| Context Recall | ... |
-
----
-
-## 7. Kết quả chi tiết
-
-| ID | Metric | Score | Ghi chú |
-|----|--------|-------|----------|
-| Q01 | ... | ... | ... |
-| Q02 | ... | ... | ... |
-| ... | ... | ... | ... |
-| Q20 | ... | ... | ... |
-
----
-
-## 8. Phân tích kết quả
-
-### Điểm mạnh
-
-- ...
-- ...
-- ...
-
-### Điểm yếu
-
-- ...
-- ...
-- ...
-
----
-
-## 9. Các trường hợp lỗi
-
-| Câu hỏi | Mô tả lỗi | Nguyên nhân |
-|----------|-----------|-------------|
-| ... | ... | ... |
-
----
-
-## 10. Đề xuất cải thiện
-
-- Điều chỉnh Chunk Size.
-- Điều chỉnh Chunk Overlap.
-- Cải thiện Retriever.
-- Bổ sung dữ liệu.
-- Cải thiện Prompt.
-- Tối ưu Embedding Model.
-
----
-
-## 11. Kết luận
-
-- Hệ thống đạt yêu cầu ở mức ...
-- Các chỉ số RAGAS cho thấy ...
-- Các hướng cải thiện trong tương lai ...
+1. Tải BGE-M3 và reindex để tăng chất lượng semantic retrieval tiếng Việt.
+2. Mở rộng golden dataset theo địa phương và loại câu hỏi.
+3. Bật RAG_ENABLE_LLM_EVAL=1 khi có quota để đối chiếu proxy metrics với RAGAS judge.

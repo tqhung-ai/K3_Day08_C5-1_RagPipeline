@@ -1,198 +1,102 @@
 [
   {
-    "id": "Q01",
-    "question": "Hà Nội là thủ đô của quốc gia nào?",
-    "reference_answer": "Hà Nội là thủ đô của Việt Nam.",
-    "reference_contexts": [
-      "Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam."
-    ],
-    "category": "definition",
-    "difficulty": "easy",
-    "source": "hanoi.md"
+    "question": "Gợi ý lịch trình Hà Giang 3 ngày 2 đêm cho người đi lần đầu.",
+    "expected_answer": "Lịch trình có thể đi Quản Bạ, Yên Minh, Đồng Văn, Mèo Vạc và đèo Mã Pì Lèng trong 3 ngày.",
+    "expected_context": "Bài kinh nghiệm du lịch Hà Giang; lịch trình 3 ngày 2 đêm"
   },
   {
-    "id": "Q02",
-    "question": "Văn Miếu – Quốc Tử Giám được xây dựng vào triều đại nào?",
-    "reference_answer": "Văn Miếu được xây dựng dưới triều Lý.",
-    "reference_contexts": [
-      "Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông."
-    ],
-    "category": "definition",
-    "difficulty": "easy",
-    "source": "van_mieu.md"
+    "question": "Hà Giang có những món đặc sản nào?",
+    "expected_answer": "Có bánh cuốn trứng, mèn mén, cháo ấu tẩu, thắng cố, thắng dền và bánh tam giác mạch.",
+    "expected_context": "Bài kinh nghiệm du lịch Hà Giang; mục món ngon"
   },
   {
-    "id": "Q03",
-    "question": "Hồ Hoàn Kiếm còn được gọi là gì?",
-    "reference_answer": "Hồ Hoàn Kiếm còn được gọi là Hồ Gươm.",
-    "reference_contexts": ["Hồ Hoàn Kiếm, hay còn gọi là Hồ Gươm."],
-    "category": "definition",
-    "difficulty": "easy",
-    "source": "ho_hoan_kiem.md"
+    "question": "Nên đi Hà Giang vào mùa nào?",
+    "expected_answer": "Mùa lúa chín khoảng tháng 8–10 và mùa hoa tam giác mạch khoảng tháng 10–11 là thời điểm đẹp.",
+    "expected_context": "Bài kinh nghiệm du lịch Hà Giang; mục thời điểm"
   },
   {
-    "id": "Q04",
-    "question": "Lăng Chủ tịch Hồ Chí Minh nằm ở đâu?",
-    "reference_answer": "Lăng Chủ tịch Hồ Chí Minh nằm tại Quảng trường Ba Đình, Hà Nội.",
-    "reference_contexts": [
-      "Lăng Chủ tịch Hồ Chí Minh tọa lạc tại Quảng trường Ba Đình."
-    ],
-    "category": "definition",
-    "difficulty": "easy",
-    "source": "lang_bac.md"
+    "question": "Đèo Mã Pì Lèng nằm ở đâu và có gì đặc biệt?",
+    "expected_answer": "Đèo nối Đồng Văn với Mèo Vạc, có cung đường hùng vĩ và tầm nhìn xuống sông Nho Quế.",
+    "expected_context": "Bài kinh nghiệm du lịch Hà Giang; mục Mã Pì Lèng"
   },
   {
-    "id": "Q05",
-    "question": "Giờ mở cửa của Văn Miếu – Quốc Tử Giám là khi nào?",
-    "reference_answer": "Thông tin giờ mở cửa được cung cấp trong tài liệu.",
-    "reference_contexts": ["Giờ mở cửa của Văn Miếu..."],
-    "category": "retrieval",
-    "difficulty": "medium",
-    "source": "van_mieu.md"
+    "question": "Ăn gì khi du lịch Quy Nhơn?",
+    "expected_answer": "Có thể thử các món đặc sản địa phương như bánh xèo tôm nhảy, bún chả cá và hải sản.",
+    "expected_context": "Bài viết ẩm thực Quy Nhơn"
   },
   {
-    "id": "Q06",
-    "question": "Giá vé tham quan Hoàng thành Thăng Long dành cho người lớn là bao nhiêu?",
-    "reference_answer": "Thông tin giá vé được nêu trong tài liệu.",
-    "reference_contexts": ["Giá vé tham quan Hoàng thành Thăng Long..."],
-    "category": "retrieval",
-    "difficulty": "medium",
-    "source": "hoang_thanh.md"
+    "question": "Gợi ý lịch trình Quy Nhơn theo nhiều phong cách.",
+    "expected_answer": "Có các lịch trình kết hợp biển, điểm văn hóa và trải nghiệm ẩm thực tùy thời gian.",
+    "expected_context": "Bài lịch trình du lịch Quy Nhơn"
   },
   {
-    "id": "Q07",
-    "question": "Địa chỉ của Chùa Một Cột là gì?",
-    "reference_answer": "Thông tin địa chỉ được nêu trong tài liệu.",
-    "reference_contexts": ["Chùa Một Cột nằm tại..."],
-    "category": "retrieval",
-    "difficulty": "medium",
-    "source": "chua_mot_cot.md"
+    "question": "Du lịch Đà Nẵng tự túc cần tham quan những đâu?",
+    "expected_answer": "Có thể kết hợp biển, bán đảo Sơn Trà, Ngũ Hành Sơn, các cây cầu và khu vui chơi trong thành phố.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Nẵng"
   },
   {
-    "id": "Q08",
-    "question": "Du khách cần lưu ý điều gì khi vào Lăng Chủ tịch Hồ Chí Minh?",
-    "reference_answer": "Du khách cần tuân thủ các quy định được nêu trong tài liệu.",
-    "reference_contexts": [
-      "Khi vào Lăng Chủ tịch Hồ Chí Minh, du khách cần..."
-    ],
-    "category": "retrieval",
-    "difficulty": "medium",
-    "source": "lang_bac.md"
+    "question": "Kinh nghiệm tiết kiệm chi phí khi đi Đà Nẵng là gì?",
+    "expected_answer": "Nên lên lịch trình trước, chọn nơi lưu trú phù hợp và di chuyển theo nhóm để tiết kiệm.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Nẵng"
   },
   {
-    "id": "Q09",
-    "question": "Hãy giới thiệu ngắn gọn về Hồ Hoàn Kiếm và các điểm tham quan xung quanh.",
-    "reference_answer": "Hồ Hoàn Kiếm là biểu tượng của Hà Nội, xung quanh có Đền Ngọc Sơn, Tháp Rùa và cầu Thê Húc.",
-    "reference_contexts": ["Hồ Hoàn Kiếm...", "Đền Ngọc Sơn...", "Tháp Rùa..."],
-    "category": "multi_context",
-    "difficulty": "medium",
-    "source": "ho_hoan_kiem.md"
+    "question": "Đà Lạt phù hợp với loại hình du lịch nào?",
+    "expected_answer": "Đà Lạt phù hợp nghỉ dưỡng, khám phá cảnh quan, cà phê và trải nghiệm tự túc.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Lạt"
   },
   {
-    "id": "Q10",
-    "question": "Gợi ý lịch trình tham quan Hà Nội trong một ngày gồm bốn địa điểm nổi tiếng.",
-    "reference_answer": "Lịch trình được xây dựng từ các địa điểm nổi bật trong tài liệu.",
-    "reference_contexts": [
-      "Văn Miếu...",
-      "Lăng Bác...",
-      "Hồ Hoàn Kiếm...",
-      "Hoàng thành Thăng Long..."
-    ],
-    "category": "multi_context",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Nên chuẩn bị gì khi đi Đà Lạt tự túc?",
+    "expected_answer": "Nên chuẩn bị quần áo ấm, lịch trình điểm đến và phương án di chuyển phù hợp.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Lạt tự túc"
   },
   {
-    "id": "Q11",
-    "question": "So sánh giá trị lịch sử của Văn Miếu và Hoàng thành Thăng Long.",
-    "reference_answer": "Văn Miếu gắn với giáo dục và Nho học, Hoàng thành Thăng Long là trung tâm quyền lực của nhiều triều đại.",
-    "reference_contexts": ["Văn Miếu...", "Hoàng thành Thăng Long..."],
-    "category": "multi_context",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Cao Bằng có những điểm du lịch nổi bật nào?",
+    "expected_answer": "Cẩm nang giới thiệu các điểm thiên nhiên và văn hóa nổi bật của Cao Bằng.",
+    "expected_context": "Cẩm nang du lịch Cao Bằng"
   },
   {
-    "id": "Q12",
-    "question": "Nếu muốn tìm hiểu văn hóa và lịch sử Hà Nội thì nên tham quan những địa điểm nào?",
-    "reference_answer": "Có thể tham quan Văn Miếu, Hoàng thành Thăng Long, Lăng Chủ tịch Hồ Chí Minh và Bảo tàng.",
-    "reference_contexts": ["Văn Miếu...", "Hoàng thành...", "Lăng Bác..."],
-    "category": "multi_context",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Quảng Bình có thể trải nghiệm những gì?",
+    "expected_answer": "Có thể khám phá cảnh quan thiên nhiên, hang động và các điểm du lịch đặc trưng của Quảng Bình.",
+    "expected_context": "Cẩm nang du lịch Quảng Bình"
   },
   {
-    "id": "Q13",
-    "question": "Hồ Tây và Hồ Hoàn Kiếm khác nhau ở điểm nào?",
-    "reference_answer": "Hai địa điểm khác nhau về diện tích, vị trí và giá trị du lịch.",
-    "reference_contexts": ["Hồ Tây...", "Hồ Hoàn Kiếm..."],
-    "category": "comparison",
-    "difficulty": "medium",
-    "source": "multiple"
+    "question": "Quảng Ninh thích hợp cho chuyến đi như thế nào?",
+    "expected_answer": "Quảng Ninh phù hợp tham quan cảnh quan biển đảo, điểm văn hóa và du lịch tự túc.",
+    "expected_context": "Cẩm nang du lịch Quảng Ninh"
   },
   {
-    "id": "Q14",
-    "question": "Nếu chỉ có nửa ngày thì nên tham quan Văn Miếu hay Hoàng thành Thăng Long trước?",
-    "reference_answer": "Tùy mục đích tham quan, hệ thống sẽ gợi ý dựa trên thông tin trong tài liệu.",
-    "reference_contexts": ["Văn Miếu...", "Hoàng thành..."],
-    "category": "comparison",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Làm sao xây dựng lịch trình du lịch tự túc tiết kiệm?",
+    "expected_answer": "Nên xác định thời gian, ưu tiên điểm gần nhau, đặt chỗ sớm và dự trù chi phí.",
+    "expected_context": "Các cẩm nang du lịch trong corpus"
   },
   {
-    "id": "Q15",
-    "question": "Bảo tàng Dân tộc học và Bảo tàng Lịch sử Quốc gia phù hợp với những đối tượng du khách nào?",
-    "reference_answer": "Mỗi bảo tàng phù hợp với nhóm du khách khác nhau dựa trên nội dung trưng bày.",
-    "reference_contexts": [
-      "Bảo tàng Dân tộc học...",
-      "Bảo tàng Lịch sử Quốc gia..."
-    ],
-    "category": "comparison",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Nếu không có thông tin về một địa điểm thì trợ lý phải làm gì?",
+    "expected_answer": "Trợ lý phải nói không thể xác minh thông tin từ nguồn hiện có thay vì đoán.",
+    "expected_context": "Quy tắc generation và citation của hệ thống"
   },
   {
-    "id": "Q16",
-    "question": "Nếu trời mưa thì nên ưu tiên tham quan những địa điểm nào?",
-    "reference_answer": "Nên ưu tiên các địa điểm trong nhà hoặc có không gian tham quan phù hợp.",
-    "reference_contexts": ["Bảo tàng...", "Địa điểm tham quan trong nhà..."],
-    "category": "reasoning",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Du lịch Hà Giang bằng xe máy cần lưu ý điều gì?",
+    "expected_answer": "Cần kiểm tra phương tiện, mang giấy tờ đầy đủ, chuẩn bị đồ bảo hộ và đi chậm trên các cung đường đèo.",
+    "expected_context": "Bài kinh nghiệm du lịch Hà Giang; mục di chuyển và lưu ý an toàn"
   },
   {
-    "id": "Q17",
-    "question": "Tôi đi cùng trẻ nhỏ thì nên lựa chọn địa điểm nào?",
-    "reference_answer": "Hệ thống gợi ý các địa điểm phù hợp với gia đình có trẻ nhỏ.",
-    "reference_contexts": ["Công viên...", "Bảo tàng..."],
-    "category": "reasoning",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Quy Nhơn có những điểm tham quan biển nào phù hợp cho người đi tự túc?",
+    "expected_answer": "Có thể tham quan các bãi biển, khu vực ven biển và kết hợp các điểm văn hóa, ẩm thực trong thành phố.",
+    "expected_context": "Bài lịch trình và cẩm nang du lịch Quy Nhơn"
   },
   {
-    "id": "Q18",
-    "question": "Tôi có ngân sách khoảng 300.000 VNĐ cho vé tham quan thì nên đi những đâu?",
-    "reference_answer": "Hệ thống đề xuất lịch trình dựa trên giá vé của các địa điểm trong tài liệu.",
-    "reference_contexts": ["Giá vé Văn Miếu...", "Giá vé Hoàng thành..."],
-    "category": "reasoning",
-    "difficulty": "hard",
-    "source": "multiple"
+    "question": "Nên sắp xếp lịch trình Đà Nẵng như thế nào để đỡ mất thời gian di chuyển?",
+    "expected_answer": "Nên nhóm các điểm gần nhau trong cùng một buổi hoặc một ngày và ưu tiên lộ trình hợp lý giữa biển, trung tâm thành phố và các điểm ngoại ô.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Nẵng; mục xây dựng lịch trình"
   },
   {
-    "id": "Q19",
-    "question": "Ai là người thiết kế Tháp Eiffel?",
-    "reference_answer": "Không có thông tin trong bộ dữ liệu để trả lời câu hỏi này.",
-    "reference_contexts": [],
-    "category": "unanswerable",
-    "difficulty": "medium",
-    "source": null
+    "question": "Đà Lạt nên tham quan vào thời điểm nào trong ngày?",
+    "expected_answer": "Có thể tham quan ngoài trời vào ban ngày, còn buổi sáng sớm và buổi tối cần chuẩn bị áo ấm vì thời tiết lạnh hơn.",
+    "expected_context": "Bài kinh nghiệm du lịch Đà Lạt; mục thời tiết và chuẩn bị"
   },
   {
-    "id": "Q20",
-    "question": "Dân số Nhật Bản năm 2026 là bao nhiêu?",
-    "reference_answer": "Không có thông tin trong bộ dữ liệu để trả lời câu hỏi này.",
-    "reference_contexts": [],
-    "category": "unanswerable",
-    "difficulty": "medium",
-    "source": null
+    "question": "Khi câu trả lời được tạo từ tài liệu, trợ lý cần hiển thị nguồn như thế nào?",
+    "expected_answer": "Trợ lý cần ghi rõ citation hoặc nguồn tài liệu cho các thông tin được sử dụng và không tự suy đoán khi thiếu bằng chứng.",
+    "expected_context": "Quy tắc generation có citation của hệ thống"
   }
 ]
