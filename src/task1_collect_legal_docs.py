@@ -13,22 +13,22 @@ import requests
 
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "legal"
 
-# Nguon: Vietnam Tourism (website du lich chinh thuc cua Viet Nam).
+# Nguon cong khai: cam nang dia phuong va tai lieu tu co so giao duc Viet Nam.
 GUIDE_SOURCES = [
     {
-        "url": "https://vietnam.travel/sites/default/files/2021-04/Adventure_Trails_Vietnam.pdf",
-        "filename": "adventure-trails-vietnam.pdf",
-        "description": "Cung duong mao hiem Ha Giang, Phong Nha, Da Lat va Mui Ne",
+        "url": "https://cdnc.heyzine.com/files/uploaded/v3/00f6ad28eaa8972b59418db41a47e43c6593ceda.pdf",
+        "filename": "cam-nang-du-lich-cao-bang.pdf",
+        "description": "Cam nang du lich Cao Bang bang tieng Viet",
     },
     {
-        "url": "https://vietnam.travel/sites/default/files/2019-11/Beginner%27s%20Guide%20to%20Vietnam%20Now.pdf",
-        "filename": "beginners-guide-to-vietnam.pdf",
-        "description": "Cam nang Viet Nam cho nguoi du lich lan dau",
+        "url": "https://inest.hust.edu.vn/documents/172165/172188/dulich-quangbinh.pdf/89bf8145-8ad4-4964-bed4-972278cb23a4",
+        "filename": "cam-nang-du-lich-quang-binh.pdf",
+        "description": "Cam nang du lich Quang Binh bang tieng Viet",
     },
     {
-        "url": "https://vietnam.travel/sites/default/files/2021-04/Family_Itinerary_Vietnam.pdf",
-        "filename": "family-itinerary-vietnam.pdf",
-        "description": "Lich trinh du lich Viet Nam danh cho gia dinh",
+        "url": "https://cdnc.heyzine.com/files/uploaded/80476d8f1cbdc6ade13c4b5033b193a5364df364.pdf",
+        "filename": "cam-nang-du-lich-quang-ninh.pdf",
+        "description": "Cam nang du lich Quang Ninh bang tieng Viet",
     },
 ]
 
