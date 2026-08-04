@@ -17,8 +17,32 @@ BM25 hoạt động thế nào:
 
 from pathlib import Path
 
-# TODO: Load corpus từ data/standardized/ hoặc từ vector store
-CORPUS: list[dict] = []  # List of {'content': str, 'metadata': dict}
+STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
+
+# Load corpus từ data/standardized/
+def load_corpus() -> list[dict]:
+    """Load tất cả file .md từ data/standardized/ thành corpus."""
+    corpus = []
+    for md_file in STANDARDIZED_DIR.rglob("*.md"):
+        content = md_file.read_text(encoding="utf-8")
+        # Skip empty files
+        if not content.strip():
+            continue
+        # Determine category from parent directory name
+        category = md_file.parent.name  # "legal" or "news"
+        corpus.append({
+            "content": content,
+            "metadata": {
+                "source": str(md_file.relative_to(STANDARDIZED_DIR.parent.parent)),
+                "category": category,
+                "filename": md_file.name,
+            }
+        })
+    return corpus
+
+
+CORPUS: list[dict] = []
+bm25_index = None
 
 
 def build_bm25_index(corpus: list[dict]):
@@ -28,15 +52,12 @@ def build_bm25_index(corpus: list[dict]):
     Args:
         corpus: List of {'content': str, 'metadata': dict}
     """
-    # TODO: Implement BM25 index
-    #
-    # from rank_bm25 import BM25Okapi
-    #
-    # # Tokenize - có thể đơn giản split(), hoặc dùng underthesea cho tiếng Việt
-    # tokenized_corpus = [doc["content"].lower().split() for doc in corpus]
-    # bm25 = BM25Okapi(tokenized_corpus)
-    # return bm25
-    raise NotImplementedError("Implement build_bm25_index")
+    from rank_bm25 import BM25Okapi
+
+    # Tokenize - đơn giản split(), có thể dùng underthesea cho tiếng Việt
+    tokenized_corpus = [doc["content"].lower().split() for doc in corpus]
+    bm25 = BM25Okapi(tokenized_corpus)
+    return bm25
 
 
 def lexical_search(query: str, top_k: int = 10) -> list[dict]:
@@ -55,28 +76,46 @@ def lexical_search(query: str, top_k: int = 10) -> list[dict]:
         }
         Sorted by score descending.
     """
-    # TODO: Implement lexical search
-    #
-    # tokenized_query = query.lower().split()
-    # scores = bm25.get_scores(tokenized_query)
-    #
-    # # Get top_k indices
-    # import numpy as np
-    # top_indices = np.argsort(scores)[::-1][:top_k]
-    #
-    # results = []
-    # for idx in top_indices:
-    #     if scores[idx] > 0:
-    #         results.append({
-    #             "content": CORPUS[idx]["content"],
-    #             "score": float(scores[idx]),
-    #             "metadata": CORPUS[idx]["metadata"]
-    #         })
-    # return results
-    raise NotImplementedError("Implement lexical_search")
+    import numpy as np
+
+    global bm25_index
+
+    # Lazy init: build index if not yet built
+    if bm25_index is None or len(CORPUS) == 0:
+        load_corpus_data()
+
+    tokenized_query = query.lower().split()
+    scores = bm25_index.get_scores(tokenized_query)
+
+    # Get top_k indices
+    top_indices = np.argsort(scores)[::-1][:top_k]
+
+    results = []
+    for idx in top_indices:
+        if scores[idx] > 0:
+            results.append({
+                "content": CORPUS[idx]["content"],
+                "score": float(scores[idx]),
+                "metadata": CORPUS[idx]["metadata"]
+            })
+    return results
+
+
+def load_corpus_data():
+    """Load corpus and build BM25 index if not yet done."""
+    global CORPUS, bm25_index
+    if len(CORPUS) == 0:
+        CORPUS = load_corpus()
+    if bm25_index is None:
+        bm25_index = build_bm25_index(CORPUS)
 
 
 if __name__ == "__main__":
+    # Load corpus and build BM25 index
+    load_corpus_data()
+    print(f"Loaded {len(CORPUS)} documents into corpus")
+    print("BM25 index built successfully")
+
     # Test
     results = lexical_search("tuition fee payment methods", top_k=5)
     for r in results:
