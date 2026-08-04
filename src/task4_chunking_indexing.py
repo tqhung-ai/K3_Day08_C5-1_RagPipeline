@@ -1,5 +1,6 @@
 """Task 4: chunk Markdown documents, embed them and index in ChromaDB."""
 
+import os
 from pathlib import Path
 
 STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
@@ -78,14 +79,29 @@ def embed_chunks(chunks: list[dict]) -> list[dict]:
     """Add normalized sentence-transformer embeddings to every chunk."""
     if not chunks:
         return []
-    from sentence_transformers import SentenceTransformer
-
-    model = SentenceTransformer(EMBEDDING_MODEL)
-    embeddings = model.encode(
-        [chunk["content"] for chunk in chunks],
-        show_progress_bar=True,
-        normalize_embeddings=True,
-    )
+    texts = [chunk["content"] for chunk in chunks]
+    try:
+        if os.getenv("RAG_OFFLINE", "").lower() in {"1", "true", "yes"}:
+            raise RuntimeError("RAG_OFFLINE requested")
+        from sentence_transformers import SentenceTransformer
+        model = SentenceTransformer(EMBEDDING_MODEL)
+        embeddings = model.encode(
+            texts,
+            show_progress_bar=True,
+            normalize_embeddings=True,
+        )
+    except Exception as exc:
+        # Offline-safe fallback: deterministic 1024-D lexical vectors. This
+        # keeps local indexing usable when Hugging Face is unreachable.
+        print(f"Warning: {EMBEDDING_MODEL} unavailable ({exc}); using hashing fallback")
+        from sklearn.feature_extraction.text import HashingVectorizer
+        vectorizer = HashingVectorizer(
+            n_features=EMBEDDING_DIM,
+            alternate_sign=False,
+            norm="l2",
+            ngram_range=(1, 2),
+        )
+        embeddings = vectorizer.transform(texts).toarray()
     for chunk, embedding in zip(chunks, embeddings):
         values = embedding.tolist() if hasattr(embedding, "tolist") else list(embedding)
         chunk["embedding"] = [float(value) for value in values]
