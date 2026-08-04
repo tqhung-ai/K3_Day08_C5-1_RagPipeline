@@ -1,17 +1,17 @@
 [
-  {
-    "question": "Học phí hàng năm của chương trình Business tại RMIT Vietnam là bao nhiêu?",
-    "expected_answer": "Khoảng 375.840.000 VND mỗi năm (tùy chương trình cụ thể).",
-    "expected_context": "Trang Tuition Fees, mục Undergraduate Programs"
-  },
-  {
-    "question": "Học phí được thanh toán theo hình thức nào?",
-    "expected_answer": "Thanh toán theo từng học kỳ, tính theo từng môn học đã đăng ký.",
-    "expected_context": "Trang Tuition Fees, mục Payment Structure"
-  },
-  {
-    "question": "Trường có cung cấp ký túc xá trong khuôn viên không?",
-    "expected_answer": "Không — trường không cung cấp chỗ ở trong khuôn viên, nhưng có đội ngũ hỗ trợ sinh viên tìm chỗ ở gần trường.",
-    "expected_context": "Trang Accommodation Services"
-  }
+  {"question":"Gợi ý lịch trình Hà Giang 3 ngày 2 đêm cho người đi lần đầu.","expected_answer":"Lịch trình có thể đi Quản Bạ, Yên Minh, Đồng Văn, Mèo Vạc và đèo Mã Pì Lèng trong 3 ngày.","expected_context":"Bài kinh nghiệm du lịch Hà Giang; lịch trình 3 ngày 2 đêm"},
+  {"question":"Hà Giang có những món đặc sản nào?","expected_answer":"Có bánh cuốn trứng, mèn mén, cháo ấu tẩu, thắng cố, thắng dền và bánh tam giác mạch.","expected_context":"Bài kinh nghiệm du lịch Hà Giang; mục món ngon"},
+  {"question":"Nên đi Hà Giang vào mùa nào?","expected_answer":"Mùa lúa chín khoảng tháng 8–10 và mùa hoa tam giác mạch khoảng tháng 10–11 là thời điểm đẹp.","expected_context":"Bài kinh nghiệm du lịch Hà Giang; mục thời điểm"},
+  {"question":"Đèo Mã Pì Lèng nằm ở đâu và có gì đặc biệt?","expected_answer":"Đèo nối Đồng Văn với Mèo Vạc, có cung đường hùng vĩ và tầm nhìn xuống sông Nho Quế.","expected_context":"Bài kinh nghiệm du lịch Hà Giang; mục Mã Pì Lèng"},
+  {"question":"Ăn gì khi du lịch Quy Nhơn?","expected_answer":"Có thể thử các món đặc sản địa phương như bánh xèo tôm nhảy, bún chả cá và hải sản.","expected_context":"Bài viết ẩm thực Quy Nhơn"},
+  {"question":"Gợi ý lịch trình Quy Nhơn theo nhiều phong cách.","expected_answer":"Có các lịch trình kết hợp biển, điểm văn hóa và trải nghiệm ẩm thực tùy thời gian.","expected_context":"Bài lịch trình du lịch Quy Nhơn"},
+  {"question":"Du lịch Đà Nẵng tự túc cần tham quan những đâu?","expected_answer":"Có thể kết hợp biển, bán đảo Sơn Trà, Ngũ Hành Sơn, các cây cầu và khu vui chơi trong thành phố.","expected_context":"Bài kinh nghiệm du lịch Đà Nẵng"},
+  {"question":"Kinh nghiệm tiết kiệm chi phí khi đi Đà Nẵng là gì?","expected_answer":"Nên lên lịch trình trước, chọn nơi lưu trú phù hợp và di chuyển theo nhóm để tiết kiệm.","expected_context":"Bài kinh nghiệm du lịch Đà Nẵng"},
+  {"question":"Đà Lạt phù hợp với loại hình du lịch nào?","expected_answer":"Đà Lạt phù hợp nghỉ dưỡng, khám phá cảnh quan, cà phê và trải nghiệm tự túc.","expected_context":"Bài kinh nghiệm du lịch Đà Lạt"},
+  {"question":"Nên chuẩn bị gì khi đi Đà Lạt tự túc?","expected_answer":"Nên chuẩn bị quần áo ấm, lịch trình điểm đến và phương án di chuyển phù hợp.","expected_context":"Bài kinh nghiệm du lịch Đà Lạt tự túc"},
+  {"question":"Cao Bằng có những điểm du lịch nổi bật nào?","expected_answer":"Cẩm nang giới thiệu các điểm thiên nhiên và văn hóa nổi bật của Cao Bằng.","expected_context":"Cẩm nang du lịch Cao Bằng"},
+  {"question":"Quảng Bình có thể trải nghiệm những gì?","expected_answer":"Có thể khám phá cảnh quan thiên nhiên, hang động và các điểm du lịch đặc trưng của Quảng Bình.","expected_context":"Cẩm nang du lịch Quảng Bình"},
+  {"question":"Quảng Ninh thích hợp cho chuyến đi như thế nào?","expected_answer":"Quảng Ninh phù hợp tham quan cảnh quan biển đảo, điểm văn hóa và du lịch tự túc.","expected_context":"Cẩm nang du lịch Quảng Ninh"},
+  {"question":"Làm sao xây dựng lịch trình du lịch tự túc tiết kiệm?","expected_answer":"Nên xác định thời gian, ưu tiên điểm gần nhau, đặt chỗ sớm và dự trù chi phí.","expected_context":"Các cẩm nang du lịch trong corpus"},
+  {"question":"Nếu không có thông tin về một địa điểm thì trợ lý phải làm gì?","expected_answer":"Trợ lý phải nói không thể xác minh thông tin từ nguồn hiện có thay vì đoán.","expected_context":"Quy tắc generation và citation của hệ thống"}
 ]

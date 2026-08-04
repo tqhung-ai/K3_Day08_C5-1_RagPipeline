@@ -53,7 +53,10 @@ def generate_with_citation(query: str, top_k: int = TOP_K, chat_history: list[di
         return {"answer": "Tôi không thể xác minh thông tin này từ nguồn hiện có.", "sources": [], "retrieval_source": "none"}
     reordered = reorder_for_llm(chunks)
     context = format_context(reordered)
-    api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
+    provider = os.getenv("LLM_PROVIDER", "openrouter").lower()
+    openrouter_key = os.getenv("OPENROUTER_API_KEY") if provider != "openai" else None
+    openai_key = os.getenv("OPENAI_API_KEY") if provider == "openai" else None
+    api_key = openrouter_key or openai_key
     answer = None
     if api_key and os.getenv("RAG_ENABLE_LLM", "").lower() in {"1", "true", "yes"}:
         try:
@@ -62,7 +65,11 @@ def generate_with_citation(query: str, top_k: int = TOP_K, chat_history: list[di
             if chat_history:
                 messages.extend(m for m in chat_history[-6:] if m.get("role") in {"user", "assistant"})
             messages.append({"role": "user", "content": f"Context:\n{context}\n\nQuestion: {query}"})
-            response = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1").chat.completions.create(
+            client = OpenAI(
+                api_key=api_key,
+                **({"base_url": "https://openrouter.ai/api/v1"} if openrouter_key else {}),
+            )
+            response = client.chat.completions.create(
                 model=LLM_MODEL, messages=messages, temperature=TEMPERATURE, top_p=TOP_P,
             )
             answer = response.choices[0].message.content

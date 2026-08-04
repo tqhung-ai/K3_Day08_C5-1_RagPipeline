@@ -79,10 +79,12 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Trần Quốc Hùng | 2A202601683 | Role 1 | |
+| Nguyễn Huy Nghĩa | 2A202601943 | Role 5 | |
+| Phạm Văn Lưu | 2A202601857 | Role 6 | |
+| Nguyễn Đức Sơn | 2A202601485 | Role 3 | |
+| Nguyễn Thế Anh | 2A202601791 | Role 4 | |
+| Phạm Thế Dũng | 2A202601985 | Role 2 | |
 
 ---
 
